@@ -17,7 +17,6 @@ class Home extends Component {
             if (err) {
                 console.error(err.message);
             } else {
-                console.log(data);
                 this.setState({
                     albums: data.results.filter(function(row) {
                         return row.wrapperType === "collection" && row.collectionType === "Album"

@@ -12,7 +12,14 @@ class Albumlist extends Component {
         this.state = {
             show: false,
             title: "",
-            artworkUrl: ""
+            artworkUrl: "",
+            albumReleaseDate: "",
+            albumTrackNum: "",
+            albumGenre: "",
+            albumUrl: "",
+            albumPrice: "",
+            albumCurrency: "",
+            albumCopyright: ""
         };
     }
 
@@ -37,10 +44,13 @@ class Albumlist extends Component {
 
     renderAlbums() {
         let albumsToShow = [];
+
         if (this.props.albums !== null) this.props.albums.forEach((value, index)=>{
+
             if(index % 3 === 0) {
                 albumsToShow.push(<Row key={(index+1)*1000} />);
             }
+
             albumsToShow.push(<Col key={index} xs={12} xsOffset={2} sm={4} smOffset={0}>
                     <Button bsStyle="link" onClick={(params) => this.handleShow(value)}>
                         <img className="albumArt" src={value.artworkUrl100} alt='Logo' />
@@ -50,6 +60,7 @@ class Albumlist extends Component {
                     <p>Released: {parseInt(value.releaseDate, 10)}</p>
                 </Col>);
         });
+
         return albumsToShow;
     }
 
@@ -59,6 +70,7 @@ class Albumlist extends Component {
                 <h2 className="listTitle">Coldplay Albums</h2>
                 <p className="listTitle">Click images for details</p>
                 <br/>
+
                 <Grid>
                     {this.renderAlbums()}
                 </Grid>
@@ -67,6 +79,7 @@ class Albumlist extends Component {
                     <Modal.Header closeButton>
                         <Modal.Title>{this.state.title}</Modal.Title>
                     </Modal.Header>
+
                     <Modal.Body>
                         <img className="modalAlbumArt" src={this.state.artworkUrl} alt='Logo' />
                         <p>Released: {parseInt(this.state.albumReleaseDate, 10)}</p>
@@ -77,6 +90,7 @@ class Albumlist extends Component {
                         <a className="albumLink" href={this.state.albumUrl} target="_blank">Click here to see album</a>
                         <p>{this.state.albumCopyright}</p>
                     </Modal.Body>
+
                     <Modal.Footer>
                         <Button onClick={this.handleClose}>Hide</Button>
                     </Modal.Footer>
