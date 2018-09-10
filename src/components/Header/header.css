@@ -1,0 +1,23 @@
+.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand{
+    margin-left: 0px;
+}
+
+.nav {
+    color: #000000;
+    font-size: 30px;
+    margin-top: 10px;
+}
+
+.navbar {
+    max-height: 80px;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px 5px;
+}
+
+nav.navbar, .navbar-default {
+    background-color: #F1F1F1 !important;
+}
